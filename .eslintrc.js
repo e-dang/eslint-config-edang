@@ -2,13 +2,7 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: [
-    "eslint:recommended",
-    "airbnb-base",
-    "eslint:recommended",
-    "plugin:promise/recommended",
-    "plugin:prettier/recommended",
-  ],
+  extends: ["airbnb-base", "eslint:recommended", "plugin:promise/recommended", "plugin:prettier/recommended"],
   rules: {
     "import/no-extraneous-dependencies": ["error", {devDependencies: true}], // if imported into code, must be listed in dependencies
     "import/prefer-default-export": "off", // default exports are annoying
@@ -55,6 +49,7 @@ module.exports = {
         sourceType: "module",
       },
       rules: {
+        "@typescript-eslint/no-unused-vars": "error",
         // makes verbose ugly code when using async/await
         "@typescript-eslint/no-misused-promises": [
           "error",
