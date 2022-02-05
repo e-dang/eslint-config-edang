@@ -49,6 +49,7 @@ module.exports = {
         sourceType: "module",
       },
       rules: {
+        "import/no-extraneous-dependencies": ["error", {devDependencies: true}], // duplicated here because it gets overriden
         "@typescript-eslint/no-unused-vars": "error",
         // makes verbose ugly code when using async/await
         "@typescript-eslint/no-misused-promises": [
