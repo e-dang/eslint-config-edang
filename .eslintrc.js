@@ -1,10 +1,16 @@
+// these rules when defined for js files, get overriden by the "extends" clause for ts files
+const sharedRules = {
+  "import/order": "warn",
+  "import/no-extraneous-dependencies": ["error", {devDependencies: true}], // if imported into code, must be listed in dependencies
+};
+
 module.exports = {
   env: {
     node: true,
   },
   extends: ["airbnb-base", "eslint:recommended", "plugin:promise/recommended", "plugin:prettier/recommended"],
   rules: {
-    "import/no-extraneous-dependencies": ["error", {devDependencies: true}], // if imported into code, must be listed in dependencies
+    ...sharedRules,
     "import/prefer-default-export": "off", // default exports are annoying
     "no-console": "warn", // should be using logger for output, but ok to have when debugging
     "class-methods-use-this": "off", // not compatible with NestJS. Also gets overriden when using with edang-react package.
@@ -49,7 +55,7 @@ module.exports = {
         sourceType: "module",
       },
       rules: {
-        "import/no-extraneous-dependencies": ["error", {devDependencies: true}], // duplicated here because it gets overriden
+        ...sharedRules,
         "@typescript-eslint/no-unused-vars": "error",
         // makes verbose ugly code when using async/await
         "@typescript-eslint/no-misused-promises": [
